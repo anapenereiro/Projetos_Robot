@@ -9,7 +9,7 @@ Este projeto utiliza o Robot Framework para automatizar testes usando a API http
 
 ##  Instalação do Robot Framework:
 
-Certifique-se de ter o Robot Framework instalado. Se não estiver, você pode instalá-lo seguindo as instruções em Installing Robot Framework.
+ - Certifique-se de ter o Robot Framework instalado. Se não estiver, você pode instalá-lo seguindo as instruções em [Installing Robot Framework](https://robotframework.org/#getting-started).
 
 ## Como usar
 
