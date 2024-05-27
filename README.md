@@ -1,2 +1,2 @@
 # Projetos_Robot
-fazendo inclusão
+este repositório contem os projetos de automação de testes usando o robot framework
