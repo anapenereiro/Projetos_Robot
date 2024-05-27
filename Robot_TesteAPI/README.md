@@ -7,6 +7,10 @@ Este projeto utiliza o Robot Framework para automatizar testes usando a API http
 - **Resource**: `testeApi_resource.robot`
   - Este arquivo contém os recursos compartilhados entre os casos de teste, como bibliotecas, variáveis, etc.
 
+##Instalação do Robot Framework:
+
+Certifique-se de ter o Robot Framework instalado. Se não estiver, você pode instalá-lo seguindo as instruções em Installing Robot Framework.
+
 ## Como usar
 
 1. **Configuração do Ambiente:**
