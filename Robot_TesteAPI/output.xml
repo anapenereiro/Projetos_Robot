@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-05-26T01:38:43.188684" rpa="false" schemaversion="5">
+<suite id="s1" name="testeApi" source="C:\Users\acpenereiro\OneDrive - Stefanini\Documents\Projetos\Robot_TesteAPI\testeApi.robot">
+<test id="s1-t1" name="Cenário: Criar um novo usuário com POST" line="5">
+<kw name="Dado que os avisos de TLS estão desativados" owner="testeApi_resource">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Import Library" owner="BuiltIn">
+<arg>urllib3</arg>
+<doc>Imports a library with the given name and optional arguments.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.111329" elapsed="0.000000"/>
+</kw>
+<arg>Import Library</arg>
+<arg>urllib3</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.111329" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Disable Warnings" owner="urllib3">
+<doc>Helper for quickly disabling all urllib3 warnings.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.111329" elapsed="0.000000"/>
+</kw>
+<arg>urllib3.disable_warnings</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.111329" elapsed="0.000000"/>
+</kw>
+<doc>Desativa os avisos de TLS</doc>
+<status status="PASS" start="2024-05-26T01:38:44.110318" elapsed="0.001011"/>
+</kw>
+<kw name="E Criar Sessão Para API" owner="testeApi_resource">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:44.118426" level="INFO">Creating Session using : alias=ReqresSession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-26T01:38:44.118426" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-05-26T01:38:44.118426" elapsed="0.000997"/>
+</kw>
+<kw name="Quando enviar uma solicitação POST para criar um usuário" owner="testeApi_resource">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.120561" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.119561" elapsed="0.001000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.120561" level="INFO">${user_data_dict} = {'name': 'morpheus', 'job': 'leader'}</msg>
+<var>${user_data_dict}</var>
+<arg>json.loads(${USER_DATA})</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.120561" elapsed="0.000000"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:44.120561" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-26T01:38:44.716349" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '37'} 
+ body=b'{"name": "morpheus", "job": "leader"}' 
+ </msg>
+<msg time="2024-05-26T01:38:44.717342" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Sun, 26 May 2024 04:40:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1716698414&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=8e294AWF06CCd4kEA97HayUiSbjaGnfVrAb7c8O3HBA%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1716698414&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=8e294AWF06CCd4kEA97HayUiSbjaGnfVrAb7c8O3HBA%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"54-qsegrYOrm93hGAMC5tJbT30+qtA"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '889b1600ada3a511-GRU'} 
+ body={"name":"morpheus","job":"leader","id":"834","createdAt":"2024-05-26T04:40:14.506Z"} 
+ </msg>
+<msg time="2024-05-26T01:38:44.717342" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${ENDPOINT_CREATE}</arg>
+<arg>json=${user_data_dict}</arg>
+<arg>headers=&amp;{headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.120561" elapsed="0.596781"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.718337" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.718337" elapsed="0.000000"/>
+</kw>
+<doc>Envia uma solicitação POST para criar um usuário na API</doc>
+<status status="PASS" start="2024-05-26T01:38:44.119561" elapsed="0.598776"/>
+</kw>
+<kw name="Então o usuário é criado com sucesso" owner="testeApi_resource">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.721566" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.720575" elapsed="0.000991"/>
+</kw>
+<doc>Verifica se o usuário foi criado com sucesso</doc>
+<status status="PASS" start="2024-05-26T01:38:44.720575" elapsed="0.000991"/>
+</kw>
+<tag>create</tag>
+<status status="PASS" start="2024-05-26T01:38:44.108794" elapsed="0.614550"/>
+</test>
+<test id="s1-t2" name="Cenário: Automatizar o GET - Single User e validar o retorno" line="12">
+<kw name="Dado que os avisos de TLS estão desativados" owner="testeApi_resource">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Import Library" owner="BuiltIn">
+<arg>urllib3</arg>
+<doc>Imports a library with the given name and optional arguments.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.729686" elapsed="0.004940"/>
+</kw>
+<arg>Import Library</arg>
+<arg>urllib3</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.729366" elapsed="0.005317"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Disable Warnings" owner="urllib3">
+<doc>Helper for quickly disabling all urllib3 warnings.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.735901" elapsed="0.000581"/>
+</kw>
+<arg>urllib3.disable_warnings</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.734683" elapsed="0.002386"/>
+</kw>
+<doc>Desativa os avisos de TLS</doc>
+<status status="PASS" start="2024-05-26T01:38:44.727928" elapsed="0.009141"/>
+</kw>
+<kw name="E Criar Sessão Para API" owner="testeApi_resource">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:44.739034" level="INFO">Creating Session using : alias=ReqresSession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-26T01:38:44.739034" elapsed="0.000997"/>
+</kw>
+<status status="PASS" start="2024-05-26T01:38:44.738039" elapsed="0.001992"/>
+</kw>
+<kw name="Quando enviar uma solicitação GET para obter o usuário" owner="testeApi_resource">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.742026" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.741540" elapsed="0.000486"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:44.742026" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-05-26T01:38:44.855228" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-05-26T01:38:44.855228" level="INFO">GET Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 26 May 2024 04:40:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1716677704&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=nvRv8%2FDptKna9TxvINZQFJHiL3gWc1eOvL4%2BUPfPGwA%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1716677704&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=nvRv8%2FDptKna9TxvINZQFJHiL3gWc1eOvL4%2BUPfPGwA%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"118-pbdwwFo9SKNhD3Lx5iHJyngpq00"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '4683', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '889b16041d0a6290-GRU', 'Content-Encoding': 'gzip'} 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ </msg>
+<msg time="2024-05-26T01:38:44.855228" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${ENDPOINT_USER}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.742026" elapsed="0.113202"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.856117" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.856117" elapsed="0.000000"/>
+</kw>
+<doc>Envia uma solicitação GET para obter um usuário da API</doc>
+<status status="PASS" start="2024-05-26T01:38:44.741028" elapsed="0.115089"/>
+</kw>
+<kw name="Então o usuário retornado deve ser igual aos dados esperados" owner="testeApi_resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.857113" level="INFO">${expected_data} = {'id': 2, 'email': 'janet.weaver@reqres.in', 'first_name': 'Janet', 'last_name': 'Weaver', 'avatar': 'https://reqres.in/img/faces/2-image.jpg'}</msg>
+<var>${expected_data}</var>
+<arg>{'id': 2, 'email': 'janet.weaver@reqres.in', 'first_name': 'Janet', 'last_name': 'Weaver', 'avatar': 'https://reqres.in/img/faces/2-image.jpg'}</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.857113" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.858110" level="INFO">${response_json} = {'data': {'id': 2, 'email': 'janet.weaver@reqres.in', 'first_name': 'Janet', 'last_name': 'Weaver', 'avatar': 'https://reqres.in/img/faces/2-image.jpg'}, 'support': {'url': 'https://reqres.in/#support...</msg>
+<var>${response_json}</var>
+<arg>json.loads($response.content)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.857113" elapsed="0.000997"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']}</arg>
+<arg>${expected_data}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.858110" elapsed="0.000997"/>
+</kw>
+<doc>Valida o retorno da solicitação GET</doc>
+<status status="PASS" start="2024-05-26T01:38:44.857113" elapsed="0.001994"/>
+</kw>
+<tag>get</tag>
+<status status="PASS" start="2024-05-26T01:38:44.726804" elapsed="0.132509"/>
+</test>
+<test id="s1-t3" name="Cenário: Enviar uma solicitação PUT para atualizar o usuário" line="19">
+<kw name="Dado que os avisos de TLS estão desativados" owner="testeApi_resource">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Import Library" owner="BuiltIn">
+<arg>urllib3</arg>
+<doc>Imports a library with the given name and optional arguments.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.861101" elapsed="0.001849"/>
+</kw>
+<arg>Import Library</arg>
+<arg>urllib3</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.861101" elapsed="0.001849"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Disable Warnings" owner="urllib3">
+<doc>Helper for quickly disabling all urllib3 warnings.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.863630" elapsed="0.000000"/>
+</kw>
+<arg>urllib3.disable_warnings</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.863630" elapsed="0.000000"/>
+</kw>
+<doc>Desativa os avisos de TLS</doc>
+<status status="PASS" start="2024-05-26T01:38:44.861101" elapsed="0.002529"/>
+</kw>
+<kw name="E Criar Sessão Para API" owner="testeApi_resource">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:44.864627" level="INFO">Creating Session using : alias=ReqresSession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-26T01:38:44.864627" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-05-26T01:38:44.864183" elapsed="0.000444"/>
+</kw>
+<kw name="Quando enviar uma solicitação PUT para atualizar o usuário" owner="testeApi_resource">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.865624" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.864627" elapsed="0.000997"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-26T01:38:44.865624" level="INFO">${payload} = {'name': 'morpheus', 'job': 'zion resident'}</msg>
+<var>${payload}</var>
+<arg>name=morpheus</arg>
+<arg>job=zion resident</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.865624" elapsed="0.000000"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:45.391147" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '44'} 
+ body=b'{"name": "morpheus", "job": "zion resident"}' 
+ </msg>
+<msg time="2024-05-26T01:38:45.391147" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 26 May 2024 04:40:15 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1716698415&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=1Io09Pbv7o30CBX3woJkwvAjKB%2FaYnt4UhCWD%2BvrwlQ%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1716698415&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=1Io09Pbv7o30CBX3woJkwvAjKB%2FaYnt4UhCWD%2BvrwlQ%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"50-8/2Wb4CDyLdqBrZh3JKhqL6E3nU"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '889b1604faa11abd-GRU', 'Content-Encoding': 'gzip'} 
+ body={"name":"morpheus","job":"zion resident","updatedAt":"2024-05-26T04:40:15.183Z"} 
+ </msg>
+<msg time="2024-05-26T01:38:45.391147" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${ENDPOINT_USER}</arg>
+<arg>json=${payload}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-05-26T01:38:44.865624" elapsed="0.525523"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-05-26T01:38:45.391147" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.391147" elapsed="0.000000"/>
+</kw>
+<doc>Envia uma solicitação PUT para atualizar um usuário na API</doc>
+<status status="PASS" start="2024-05-26T01:38:44.864627" elapsed="0.526520"/>
+</kw>
+<kw name="Então a atualização do usuário deve ser bem-sucedida" owner="testeApi_resource">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-26T01:38:45.396843" level="INFO">${response_json} = {'name': 'morpheus', 'job': 'zion resident', 'updatedAt': '2024-05-26T04:40:15.183Z'}</msg>
+<var>${response_json}</var>
+<arg>json.loads($response.content)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.395849" elapsed="0.000994"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['name']}</arg>
+<arg>morpheus</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.396843" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['job']}</arg>
+<arg>zion resident</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.396843" elapsed="0.000000"/>
+</kw>
+<doc>Verifica se a atualização do usuário foi bem-sucedida</doc>
+<status status="PASS" start="2024-05-26T01:38:45.395849" elapsed="0.000994"/>
+</kw>
+<tag>update</tag>
+<status status="PASS" start="2024-05-26T01:38:44.860105" elapsed="0.541214"/>
+</test>
+<test id="s1-t4" name="Cenário: Enviar uma solicitação Delete" line="26">
+<kw name="Dado que os avisos de TLS estão desativados" owner="testeApi_resource">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Import Library" owner="BuiltIn">
+<arg>urllib3</arg>
+<doc>Imports a library with the given name and optional arguments.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.407794" elapsed="0.003982"/>
+</kw>
+<arg>Import Library</arg>
+<arg>urllib3</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.406796" elapsed="0.004980"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Disable Warnings" owner="urllib3">
+<doc>Helper for quickly disabling all urllib3 warnings.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.412777" elapsed="0.000996"/>
+</kw>
+<arg>urllib3.disable_warnings</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.412777" elapsed="0.001072"/>
+</kw>
+<doc>Desativa os avisos de TLS</doc>
+<status status="PASS" start="2024-05-26T01:38:45.406083" elapsed="0.007766"/>
+</kw>
+<kw name="E Criar Sessão Para API" owner="testeApi_resource">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:45.415765" level="INFO">Creating Session using : alias=ReqresSession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-26T01:38:45.415765" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2024-05-26T01:38:45.414770" elapsed="0.001997"/>
+</kw>
+<kw name="Quando enviar uma solicitação DELETE para excluir o usuário" owner="testeApi_resource">
+<kw name="Delete Request" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:45.418756" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg time="2024-05-26T01:38:45.970969" level="INFO">DELETE Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-05-26T01:38:45.970969" level="INFO">DELETE Response : url=https://reqres.in/api/users/2 
+ status=204, reason=No Content 
+ headers={'Date': 'Sun, 26 May 2024 04:40:15 GMT', 'Content-Length': '0', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1716698415&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=1Io09Pbv7o30CBX3woJkwvAjKB%2FaYnt4UhCWD%2BvrwlQ%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1716698415&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=1Io09Pbv7o30CBX3woJkwvAjKB%2FaYnt4UhCWD%2BvrwlQ%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '889b16088b60ae4a-GRU'} 
+ body=None 
+ </msg>
+<msg time="2024-05-26T01:38:45.970969" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${ENDPOINT_USER}</arg>
+<doc>*DEPRECATED* Please use `DELETE On Session` instead.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.418756" elapsed="0.552213"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-05-26T01:38:45.970969" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.970969" elapsed="0.000000"/>
+</kw>
+<doc>Envia uma solicitação DELETE para excluir um usuário na API</doc>
+<status status="PASS" start="2024-05-26T01:38:45.417761" elapsed="0.553208"/>
+</kw>
+<kw name="Então a atualização do usuário deve ser deletada com sucesso" owner="testeApi_resource">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-26T01:38:45.975706" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>204</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.975706" elapsed="0.000000"/>
+</kw>
+<doc>Verifica se a atualização do usuário foi deletada com sucesso</doc>
+<status status="PASS" start="2024-05-26T01:38:45.974707" elapsed="0.000999"/>
+</kw>
+<tag>delete</tag>
+<status status="PASS" start="2024-05-26T01:38:45.404798" elapsed="0.573887"/>
+</test>
+<test id="s1-t5" name="Cenário: Envia uma solicitação GET para obter um usuário após a exclusão" line="33">
+<kw name="Dado que os avisos de TLS estão desativados" owner="testeApi_resource">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Import Library" owner="BuiltIn">
+<arg>urllib3</arg>
+<doc>Imports a library with the given name and optional arguments.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.985759" elapsed="0.002926"/>
+</kw>
+<arg>Import Library</arg>
+<arg>urllib3</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.985405" elapsed="0.004219"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Disable Warnings" owner="urllib3">
+<doc>Helper for quickly disabling all urllib3 warnings.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.990279" elapsed="0.000642"/>
+</kw>
+<arg>urllib3.disable_warnings</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.989725" elapsed="0.001196"/>
+</kw>
+<doc>Desativa os avisos de TLS</doc>
+<status status="PASS" start="2024-05-26T01:38:45.984557" elapsed="0.006364"/>
+</kw>
+<kw name="E Criar Sessão Para API" owner="testeApi_resource">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:45.994020" level="INFO">Creating Session using : alias=ReqresSession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-26T01:38:45.992920" elapsed="0.001100"/>
+</kw>
+<status status="PASS" start="2024-05-26T01:38:45.991918" elapsed="0.002102"/>
+</kw>
+<kw name="Quando enviar uma solicitação GET para obter o usuário após exclusão" owner="testeApi_resource">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-26T01:38:45.995905" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.994921" elapsed="0.000984"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2024-05-26T01:38:45.995905" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-05-26T01:38:46.510143" level="INFO">GET Request : url=https://reqres.in/api/users/23 
+ path_url=/api/users/23 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-05-26T01:38:46.511626" level="INFO">GET Response : url=https://reqres.in/api/users/23 
+ status=404, reason=Not Found 
+ headers={'Date': 'Sun, 26 May 2024 04:40:16 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1716698416&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=LCSEer4NhYH7C7iDpMAz1uJuDC4FAl74nv10HHw39XY%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1716698416&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=LCSEer4NhYH7C7iDpMAz1uJuDC4FAl74nv10HHw39XY%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'EXPIRED', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '889b160bfdafaf68-GRU'} 
+ body={} 
+ </msg>
+<msg time="2024-05-26T01:38:46.511626" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${ENDPOINT_USER2}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2024-05-26T01:38:45.995905" elapsed="0.515721"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-05-26T01:38:46.512622" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-05-26T01:38:46.512622" elapsed="0.001221"/>
+</kw>
+<doc>Envia uma solicitação GET para obter um usuário após a exclusão</doc>
+<status status="PASS" start="2024-05-26T01:38:45.994921" elapsed="0.518922"/>
+</kw>
+<kw name="Então o usuário não deve ser encontrado" owner="testeApi_resource">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-26T01:38:46.517769" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-26T01:38:46.516315" elapsed="0.002449"/>
+</kw>
+<doc>Verifica se o usuário não foi encontrado após a exclusão</doc>
+<status status="PASS" start="2024-05-26T01:38:46.515969" elapsed="0.002795"/>
+</kw>
+<tag>get2</tag>
+<status status="PASS" start="2024-05-26T01:38:45.982410" elapsed="0.537874"/>
+</test>
+<status status="PASS" start="2024-05-26T01:38:43.192678" elapsed="3.332499"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">create</stat>
+<stat pass="1" fail="0" skip="0">delete</stat>
+<stat pass="1" fail="0" skip="0">get</stat>
+<stat pass="1" fail="0" skip="0">get2</stat>
+<stat pass="1" fail="0" skip="0">update</stat>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="testeApi">testeApi</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-05-26T01:38:44.120561" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-26T01:38:44.742026" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-05-26T01:38:45.418756" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg time="2024-05-26T01:38:45.995905" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
