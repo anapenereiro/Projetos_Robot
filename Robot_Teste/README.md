@@ -1,4 +1,4 @@
-Este projeto utiliza o Robot Framework para realizar os testes do site https://automationexercise.com/login
+Este projeto utiliza o Robot Framework para realizar os testes automatizados Web do site https://automationexercise.com/login
 
 ## Como usar o projeto
 
